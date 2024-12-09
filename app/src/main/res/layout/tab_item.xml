@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.customizeddesigntabandmorelayout.ui.TabItemViewModel" />
+
+        <import type="com.google.android.material.tabs.TabLayout" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        tools:background="@color/Grey_2">
+
+        <View
+            android:background="@{viewModel.backgroundColor}"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/tab_image"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:visibility="@{viewModel.useImage ? View.VISIBLE : View.GONE}"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintEnd_toStartOf="@+id/tab_text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:contentDescription="@null"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_launcher_background" />
+
+            <ImageView
+                android:contentDescription="@null"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:src="@drawable/ic_launcher_foreground" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tab_text"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@{viewModel.name}"
+            android:textColor="@{viewModel.textColor}"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tab_image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="tab text"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
