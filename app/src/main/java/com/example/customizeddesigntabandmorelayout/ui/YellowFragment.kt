@@ -55,29 +55,13 @@ class YellowFragment : Fragment((R.layout.fragment_item)) {
 
     private fun getList(): ObservableArrayList<CollectionItemViewModel> {
         return ObservableArrayList<CollectionItemViewModel>().apply {
-            add(SectionCarouselItemViewModel(
-                listOf<CarouselItemViewModel>(
-                    CarouselItemViewModel(
-                        "Description 1",
-                        ContextCompat.getDrawable(requireContext(), R.drawable.img1)
-                    ),
-                    CarouselItemViewModel(
-                        "Description 2",
-                        ContextCompat.getDrawable(requireContext(), R.drawable.img2)
-                    ),
-                    CarouselItemViewModel(
-                        "Description 3",
-                        ContextCompat.getDrawable(requireContext(), R.drawable.img3)
-                    )
-                )
+            add(SectionSingleItemViewModel(
+                "Description 8",
+                ContextCompat.getDrawable(requireContext(), R.drawable.img8)
             ))
             add(SectionSingleItemViewModel(
-                "Description 4",
-                ContextCompat.getDrawable(requireContext(), R.drawable.img2)
-            ))
-            add(SectionSingleItemViewModel(
-                "Description 5",
-                ContextCompat.getDrawable(requireContext(), R.drawable.img3)
+                "Description 9",
+                ContextCompat.getDrawable(requireContext(), R.drawable.img9)
             ))
         }
     }

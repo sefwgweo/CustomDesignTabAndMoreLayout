@@ -88,11 +88,11 @@ class RedFragment : Fragment((R.layout.fragment_item)) {
             ))
             add(SectionSingleItemViewModel(
                 "Description 4",
-                ContextCompat.getDrawable(requireContext(), R.drawable.img2)
+                ContextCompat.getDrawable(requireContext(), R.drawable.img4)
             ))
             add(SectionSingleItemViewModel(
                 "Description 5",
-                ContextCompat.getDrawable(requireContext(), R.drawable.img3)
+                ContextCompat.getDrawable(requireContext(), R.drawable.img5)
             ))
         }
     }
