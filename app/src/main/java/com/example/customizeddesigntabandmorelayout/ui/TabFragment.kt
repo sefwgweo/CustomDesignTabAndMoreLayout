@@ -73,7 +73,13 @@ class TabFragment : Fragment(R.layout.fragment_tab) {
 
         override fun getItemCount(): Int = tabList.size
         override fun createFragment(position: Int): Fragment {
-            val fragment = RedFragment.newInstance()
+            val fragment = when (position) {
+                0 -> RedFragment.newInstance()
+                1 -> YellowFragment.newInstance()
+                2 -> BlueFragment.newInstance()
+                else -> BlueFragment.newInstance()
+            }
+
             fragments.add(WeakReference(fragment))
             return fragment
         }

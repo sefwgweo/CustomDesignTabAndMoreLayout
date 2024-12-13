@@ -1,7 +1,9 @@
 package com.example.customizeddesigntabandmorelayout.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +11,11 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ObservableArrayList
 import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.customizeddesigntabandmorelayout.R
 import com.example.customizeddesigntabandmorelayout.databinding.FragmentItemBinding
 import com.example.customizeddesigntabandmorelayout.databinding.ListItemCarouselBinding
+import com.example.customizeddesigntabandmorelayout.databinding.ListItemSingleBinding
 
 class RedFragment : Fragment((R.layout.fragment_item)) {
     companion object {
@@ -30,7 +34,8 @@ class RedFragment : Fragment((R.layout.fragment_item)) {
     }
 
     private fun initUIComponent() {
-        binding.recyclerView.adapter = RecyclerViewAdapter(getList(), sectionViewTypeProvider, onPostBindViewListener)
+        val adapter = RecyclerViewAdapter(getList(), sectionViewTypeProvider, onPostBindViewListener)
+        binding.recyclerView.adapter = adapter
     }
 
     val sectionViewTypeProvider = object : ItemViewTypeProvider {
@@ -63,6 +68,12 @@ class RedFragment : Fragment((R.layout.fragment_item)) {
                         sectionViewTypeProvider
                     )
                 }
+                is SectionSingleItemViewModel -> {
+                    val itemBinding = DataBindingUtil.findBinding<ListItemSingleBinding>(viewGroup) ?: return@onPostBindViewListener
+                    itemBinding.container.setOnClickListener {
+                        startActivity(Intent(requireContext(), DetailActivity::class.java))
+                    }
+                }
                 else -> return@onPostBindViewListener
             }
         }
@@ -88,11 +99,11 @@ class RedFragment : Fragment((R.layout.fragment_item)) {
             ))
             add(SectionSingleItemViewModel(
                 "Description 4",
-                ContextCompat.getDrawable(requireContext(), R.drawable.img2)
+                ContextCompat.getDrawable(requireContext(), R.drawable.img4)
             ))
             add(SectionSingleItemViewModel(
                 "Description 5",
-                ContextCompat.getDrawable(requireContext(), R.drawable.img3)
+                ContextCompat.getDrawable(requireContext(), R.drawable.img5)
             ))
         }
     }

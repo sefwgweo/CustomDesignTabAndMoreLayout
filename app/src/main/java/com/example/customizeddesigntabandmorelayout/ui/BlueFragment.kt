@@ -30,8 +30,6 @@ class BlueFragment : Fragment((R.layout.fragment_item)) {
     val sectionViewTypeProvider = object : ItemViewTypeProvider {
         override fun getLayoutRes(modelCollectionItem: CollectionItemViewModel): Int {
             return when (modelCollectionItem) {
-                is SectionCarouselItemViewModel -> R.layout.list_item_carousel
-                is CarouselItemViewModel -> R.layout.list_item_horizontal
                 is SectionSingleItemViewModel -> R.layout.list_item_single
                 else -> throw IllegalArgumentException("Unknown item type")
             }
@@ -55,29 +53,13 @@ class BlueFragment : Fragment((R.layout.fragment_item)) {
 
     private fun getList(): ObservableArrayList<CollectionItemViewModel> {
         return ObservableArrayList<CollectionItemViewModel>().apply {
-            add(SectionCarouselItemViewModel(
-                listOf<CarouselItemViewModel>(
-                    CarouselItemViewModel(
-                        "Description 1",
-                        ContextCompat.getDrawable(requireContext(), R.drawable.img1)
-                    ),
-                    CarouselItemViewModel(
-                        "Description 2",
-                        ContextCompat.getDrawable(requireContext(), R.drawable.img2)
-                    ),
-                    CarouselItemViewModel(
-                        "Description 3",
-                        ContextCompat.getDrawable(requireContext(), R.drawable.img3)
-                    )
-                )
+            add(SectionSingleItemViewModel(
+                "Description 6",
+                ContextCompat.getDrawable(requireContext(), R.drawable.img6)
             ))
             add(SectionSingleItemViewModel(
-                "Description 4",
-                ContextCompat.getDrawable(requireContext(), R.drawable.img2)
-            ))
-            add(SectionSingleItemViewModel(
-                "Description 5",
-                ContextCompat.getDrawable(requireContext(), R.drawable.img3)
+                "Description 7",
+                ContextCompat.getDrawable(requireContext(), R.drawable.img7)
             ))
         }
     }
