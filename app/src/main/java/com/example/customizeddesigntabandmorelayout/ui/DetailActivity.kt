@@ -51,6 +51,7 @@ class DetailActivity : AppCompatActivity() {
                         BottomSheetBehavior.STATE_COLLAPSED -> {
                             state = BottomSheetBehavior.STATE_HIDDEN
                             finish()
+                            overridePendingTransition(0, 0)
                         }
 
                         BottomSheetBehavior.STATE_HIDDEN -> {
@@ -64,7 +65,13 @@ class DetailActivity : AppCompatActivity() {
                 }
 
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    // noop
+                    val upperThreshold = 0.7f
+                    if (state == BottomSheetBehavior.STATE_SETTLING && slideOffset < 1) {
+                        if (slideOffset >= upperThreshold) {
+                            // 位置が0.7以上の場合は、EXPAND状態にする
+                            state = BottomSheetBehavior.STATE_EXPANDED
+                        }
+                    }
                 }
             })
         }
