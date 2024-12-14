@@ -1,10 +1,10 @@
-package com.example.customizeddesigntabandmorelayout
+package com.example.customizeddesigntabandmorelayout.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import com.example.customizeddesigntabandmorelayout.R
 import com.example.customizeddesigntabandmorelayout.databinding.ActivityMainBinding
-import com.example.customizeddesigntabandmorelayout.ui.TabFragment
 
 class MainActivity : AppCompatActivity() {
 
